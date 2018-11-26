@@ -1,0 +1,26 @@
+路由是ip+/getemaildata
+
+
+
+需要传的数据是post请求格式JSON例如：
+{	
+	"emailID":"18485592160@163.com",
+	"msg":"邮箱警告报错测试test"
+}
+
+
+# type=plain 文本格式 默认
+# type=html  网页格式
+# 暂时不支持image和file格式
+# 邮箱支持发送警告给多人
+
+
+config文件说明：
+{
+    "mail_user":"1214861939@qq.com",           #发信人账号邮箱
+    "mail_password":"clleujeyfpbzhhbi",        #发信人账号邮箱的授权码
+    "senderName":"yangkai",						#收信人名字
+    "mail_host":"smtp.qq.com",					#SMTP服务器地址（默认是QQ邮箱）
+    "mail_port":"465",							#SMTP服务器端口地址
+    "subject":"warn   error"					#发送邮件的标题
+}
