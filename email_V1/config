@@ -1,0 +1,13 @@
+{
+    "mail_user":"1214861939@qq.com",
+    "mail_password":"clleujeyfpbzhhbi",
+    "senderName":"元丁科技有限公司",
+    "mail_host":"smtp.qq.com",
+    "mail_port":"465",
+    "subject":"元丁科技返回的信息",
+    "host":"127.0.0.1",
+    "user":"root",
+    "passwd":"qwe123",
+    "database":"mydb"
+
+}

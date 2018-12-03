@@ -1,0 +1,37 @@
+1.路由是ip+/getemaildata  发送验证码
+
+需要传JSON格式的post请求例如：
+{	
+	"receiver_email":"18485592160@163.com"
+}
+
+2.路由是ip+/validatedata  验证验证码
+
+需要传JSON格式的post请求例如：
+{
+	"validatedata":"oQq3"
+}
+
+
+3.config文件说明：
+{
+    "mail_user":"1214861939@qq.com",           #发信人账号邮箱
+    "mail_password":"clleujeyfpbzhhbi",        #发信人账号邮箱的授权码
+    "senderName":"yangkai",						#收信人名字
+    "mail_host":"smtp.qq.com",					#SMTP服务器地址（默认是QQ邮箱）
+    "mail_port":"465",							#SMTP服务器端口地址
+    "subject":"title"					        #发送邮件的标题
+    "host":"127.0.0.1",                         #host
+    "user":"root",                              #数据库的用户名
+    "passwd":"qwe123",                          #数据库密码
+    "database":"mydb"                           #数据库database名
+
+}
+
+4.关于返回的状态码的简单说明
+200  请求OK
+500  服务器遇到错误无法完成请求
+404  找不到请求的相关数据
+403  parameter error,服务器拒绝请求
+400 服务器不理解请求的语法
+204 服务器成功请求了，但是没有放回任何的数据（查询数据库里面没有此相关数据）
