@@ -193,64 +193,103 @@ def RunVehicleSearch(Vehicle_No):
 
     else:
         try:
-            title = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_34")[0].get_text().strip()
-            print(title)
+            title = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_31")[0].get_text().strip()
+            print("title:",title)
+            print(soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_66")[0].get_text().strip(),"OK")
         except:
             title = None
-        #获取数据
+        # 获取数据
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_36")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_37")[0].get_text().strip()
+            result_dict["licenseAddress"] = title
         except:
-            result_dict['Registration No:'] = None
+
+            result_dict["licenseAddress"] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_41")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_42")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_34")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_35")[0].get_text().strip()
         except:
-            result_dict['Chassis No:'] = None
+            result_dict['RegistrationNo'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_46")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_47")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_39")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_40")[0].get_text().strip()
         except:
-            result_dict['Owner Name:'] = None
+            result_dict['ChassisNo'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_49")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_50")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_44")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_45")[0].get_text().strip()
         except:
-            result_dict['Vehicle Class:'] = None
+            result_dict['OwnerName'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_54")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_55")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_47")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_48")[0].get_text().strip()
         except:
-            result_dict['Maker/Model:'] = None
+            result_dict['VehicleClass'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_57")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_58")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_52")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_53")[0].get_text().strip()
         except:
-            result_dict['Fitness Upto:'] = None
+            result_dict['Maker/Model'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_62")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_63")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_55")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_56")[0].get_text().strip()
         except:
-            result_dict['Pollution Norms:'] = None
+            result_dict['FitnessUpto'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_67")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_68")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_60")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_61")[0].get_text().strip()
         except:
-            result_dict["Financier's Name:"] = None
-        #右边数据
+            result_dict['PollutionNorms'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_38")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_39")[0].get_text().strip()
+            if soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_66")[0].get_text().strip():
+                result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_65")[0].get_text().strip().replace(' ',
+                                                                                                                     '').replace(
+                    ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_66")[0].get_text().strip()
+            else:
+                result_dict[
+                    soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_65")[0].get_text().strip().replace(' ',
+                                                                                                             '').replace(
+                        ':', '')] = None
+
         except:
-            result_dict['Registration Date:'] = None
+            result_dict["Financier'sName"] = None
+        # 右边数据
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_43")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_44")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_36")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_37")[0].get_text().strip()
         except:
-            result_dict['Engine No:'] = None
+            result_dict['RegistrationDate'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_51")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_52")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_41")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_42")[0].get_text().strip()
         except:
-            result_dict['Fuel:'] = None
+            result_dict['EngineNo'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_59")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_60")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_49")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_50")[0].get_text().strip()
         except:
-            result_dict['Insurance Upto:'] = None
+            result_dict['Fuel'] = None
         try:
-            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_64")[0].get_text().strip()] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_65")[0].get_text().strip()
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_57")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_58")[0].get_text().strip()
         except:
-            result_dict['Status:'] = None
+            result_dict['InsuranceUpto'] = None
+        try:
+            result_dict[soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_62")[0].get_text().strip().replace(' ',
+                                                                                                                 '').replace(
+                ':', '')] = soup.select("#vehiclesearchstatus:j_id_jsp_1224339130_63")[0].get_text().strip()
+        except:
+            result_dict['Status'] = None
         # dict = {}
         # dict[title] = result_dict
         return result_dict
