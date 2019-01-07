@@ -1,0 +1,53 @@
+分析的过程：
+
+1.构建登入请求：返回的是
+https://www.jio.com/JioWebService/rest/loginService/jioIdLogin     post1
+{"loginFailedCount":5,"loginCaptchaVerified":true,"responseMsg":"LOGIN_SUCCESSFUL","responseCode":null,"captchaRefreshCnt":0,"errorMessage":null}
+
+
+https://www.jio.com/Jio/portal/myAccount?_adf.ctrl-state=133wd2zn2i_22    post2
+
+POST /Jio/portal/jioLogin?_adf.ctrl-state=atjmft1ay_4 HTTP/1.1
+https://www.jio.com/Jio/portal/myAccount?_adf.ctrl-state=1cf7y4lx4f_22
+2.pt1:pt_s9:pt_it1=&pt1:r1:0:sb11:it1=&org.apache.myfaces.trinidad.faces.FORM=f1&javax.faces.ViewState=!-s7p6grsbb
+https://www.jio.com/Jio/portal/myAccount">https://www.jio.com/Jio/portal/myAccount
+
+
+3.最后需要提交的数据
+POST /Jio/portal/myAccount?_adf.ctrl-state=atjmft1ay_22 HTTP/1.1
+
+https://www.jio.com/Jio/portal/myAccount?_adf.ctrl-state=atjmft1ay_22
+
+pt1:pt_s9:pt_it1: 
+pt1:r1:0:it2: 
+org.apache.myfaces.trinidad.faces.FORM: f1
+javax.faces.ViewState: !-8gk6xfpj7
+event: pt1:r1:0:pollMyPlans
+event.pt1:r1:0:pollMyPlans: <m xmlns="http://oracle.com/richClient/comm"><k v="type"><s>poll</s></k></m>
+oracle.adf.view.rich.PROCESS: pt1:r1
+
+post1
+pt1:pt_s9:pt_it1: 
+org.apache.myfaces.trinidad.faces.FORM: f1
+javax.faces.ViewState: !-eyt8pbs26
+event: pt1:r1:0:poll1
+event.pt1:r1:0:poll1: <m xmlns="http://oracle.com/richClient/comm"><k v="type"><s>poll</s></k></m>
+oracle.adf.view.rich.PROCESS: pt1:r1
+
+
+https://www.jio.com/Jio/portal/myAccount?_adf.ctrl-state=133wd2zn2i_22    post3
+pt1:pt_s9:pt_it1: 
+org.apache.myfaces.trinidad.faces.FORM: f1
+javax.faces.ViewState: !-8gk6xfpj7
+event: pt1:r1:0:poll1
+event.pt1:r1:0:poll1: <m xmlns="http://oracle.com/richClient/comm"><k v="type"><s>poll</s></k></m>
+oracle.adf.view.rich.PROCESS: pt1:r1
+
+post2
+pt1:pt_s9:pt_it1: 
+pt1:r1:0:it2: 
+org.apache.myfaces.trinidad.faces.FORM: f1
+javax.faces.ViewState: !-eyt8pbs26
+event: pt1:r1:0:pollMyPlans
+event.pt1:r1:0:pollMyPlans: <m xmlns="http://oracle.com/richClient/comm"><k v="type"><s>poll</s></k></m>
+oracle.adf.view.rich.PROCESS: pt1:r1
