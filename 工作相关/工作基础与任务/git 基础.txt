@@ -1,0 +1,16 @@
+git  checkout  master
+
+查看所以分支：
+git branch -r
+
+git  checkout  master
+git clean -df
+git reset --hard  HEAD  
+ 最后同步一下仓
+
+
+git  checkout  Scrapy_Selenium
+
+ git reset --hard eb2e1910ee468d506ae0a96b4af6160340e44aef
+ 
+ 

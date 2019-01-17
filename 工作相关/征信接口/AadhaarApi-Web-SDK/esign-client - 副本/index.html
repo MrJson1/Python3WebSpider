@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing gateway</title>
+    <link rel="stylesheet" href="./aadhaar-api-web-sdk.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Button to open gateway -- event attached in javascript -->
+<input type="button" id="gatewayBtn" value="open gateway">
+
+
+
+<div id="quaggaModal" class="qmodel">
+    <div id="quaggaModelContent" class="qmodel-content"></div>
+</div>
+
+<script type="application/javascript" src="aadhaar-api-web-sdk.js"></script>
+<script type="application/javascript">
+
+    //Setup gateway
+	var creditScoreGatewayOptions = {
+		company_display_name: '<<Add your company name here>>', //(required)
+		front_text_color: 'FFFFFF', //(optional)Add the hex for colour of text of company name
+		background_color: '2C3E50', //(optional)Add the hex for background colour to be set for gateway.
+		logo_url: 'https://your-square-product-logo-image-url-here.png', //(required)
+		full_name: “SATHISHKUMAR M SATHISH KU”,
+		address_line: “223 NACHIANNAN ANGANNAN STREET RAMANATHAPURAM COIMBATORE”,
+		state: “TN”,
+		postal: “641045",
+		dob: “1986-06-03”,
+		pan_number: “BUXPS2681D”,
+		customer_phone: “User Phone Number”
+		};
+
+    //Generate gateway transaction at backend via rest API call. [Requires AGENCY ID & API KEY]
+    // --on scuccess pass <<gateway transaction id>> below
+
+    document.getElementById("gatewayBtn").onclick = openGateway;
+
+    //open gateway
+    function openGateway() {
+        //create new gateway transaction
+
+        var myAadhaarCSGateway = new CreditScoreGateway (transactionId, creditScoreGatewayOptions);
+        '{{pass_customer_email_here}}');
+        openCSGateway(myAadhaarCSGateway);
+    }
+
+    /************************************************
+     *  Handler functions for different scenarios   *
+     ************************************************/
+
+    function handleEsignConsentDenied() {
+        console.log('Handling consent denial at client end');
+        //Handle the case when user denies consent
+    }
+
+    function handleAadhaarEsignSuccess(responseJSON) {
+        console.log('Handling EKYC Success at client end');
+    }
+
+    function handleAadhaarEsignFailure(errorJSON) {
+        console.log('Handling EKYC failure at client end');
+        //console.log(errorJSON);
+        //Handle the case when esign fails
+    }
+
+    function handleAadhaarOTPFailure(errorJSON){
+        console.log('Handling OTP failure cases at client end');
+        //handle case when login OTP fails
+    }
+
+    function handleGatewayError(errorJSON) {
+        console.log('Handling Gateway launch failure at client end');
+        //console.log(errorJSON);
+    }
+
+    function handleGatewayTermination() {
+        //Do not remove this function, even if not used.
+        console.log('Handling Gateway Termination at client end');
+    }
+
+</script>
+</body>
+</html>

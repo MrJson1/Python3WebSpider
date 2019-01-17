@@ -1,0 +1,421 @@
+代码格式化  ctrl+alt+L
+JSON 的格式是双引号
+
+mstsc 远程桌面
+
+pytesseract库只是一个基础的文字识别库
+
+打码平台：若快 超级鹰
+
+
+识别验证码基本上有三个方案。 一：人眼识别，手动输入   二：Tesseract对简单验证码的识别。  三：半自动的云打码平台，帮你24小时识别验证码
+所需工具： 
+PIL  （python图片处理库）
+pytesseract （python库，用于调用Tesseract 引擎进行验证码识别）
+Tesseract-OCR （一个验证码识别引擎，google开源项目）
+lang=‘chi_sim’代表中文识别，如果不加无法识别中文模拟登录其实主要掌握了几点，就很好下手。
+
+#！/usr/bin/env  python
+
+第一个网站：
+python模拟登入要点：
+
+1、要抓住真正要登录的URL；
+2、要拿到要post的表单数据Form data，一般是以字典形式；
+3、填写好header，有的网站可能会认证User-Agent,Host,Referer等等请求头
+
+
+修改一下这个文件的C:\Python3\lib\site-packages\pytesseract\pytesseract.py
+28行的位置
+tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
+
+
+PAN is Active but the details are not matching with PAN database.
+
+第二个网站：
+https://resident.uidai.gov.in/aadhaarverification
+
+input#login-email   class
+
+
+完成3个电商平台的爬虫，结果同样保存到DynamoDB上。
+2. 把公司信息重新跑一遍
+
+
+
+宋浪
+songl@yuanding-inc.com
+SL13985191033
+
+服务器的IP：
+149.129.137.13
+administrator
+abcde123!@#
+
+
+149.129.138.0
+administrator
+abcde123!@#
+
+47.74.208.92
+root
+abcde123!@#2018
+
+第三个任务：
+邮箱系统服务
+做成这样的服务： 
+1. 用户提供给我们的向邮箱发一个验证码邮件                                         
+2. 让用户返回验证码给我们，判断该邮件是否准确										
+3. 用户返回的验证码正确以后，再根据我们的公司数据判断用户的邮箱是否属于公司邮箱
+4. 把这个公司的信息提取出来，与该客户的邮箱一起发给接口。
+
+第4个任务：
+https://www.jio.com/Jio/portal/jioLogin
+
+username = "duxmin2006@126.com"
+password = "qwertyui12"
+实现登入
+
+
+第5个任务：中国电信登入
+17785395847
+123456789@ABC
+
+import execjs
+
+source = """
+    你的这段js
+"""
+
+print execjs.compile(source).call('加密方法', '参数1', '参数2')
+
+18551985715
+15185764374@ABC
+
+Account: 18551985715
+UType: 204
+ProvinceID: 
+AreaCode: 
+CityNo: 
+RandomFlag: 0
+Password: rq9MV/ydbMXdunrbO88yXQ==
+Captcha: 3EUU
+
+js文件（jquery.fn-aes.min.js）
+AES方法是支持AES-128、AES-192和AES-256的，加密过程中使用哪种加密方式取决于传入key的类型，否则就会按照AES-256的方式加密
+    d = CryptoJS.AES.encrypt('15185764374@ABC',
+                             CryptoJS.enc.Utf8.parse(CryptoJS.MD5("login.189.cn")), {
+                                  iv: CryptoJS.enc.Utf8.parse("1234567812345678")
+     
+	});
+	alert(d + "");
+	
+	d = CryptoJS.enc.Utf8.parse("6")
+    alert(d + "");
+login.189.cn
+
+<script type="text/javascript" src="/creditsystem/script/core.js"></script>
+
+d = CryptoJS.AES.encrypt('15185764374@ABC', 
+						'3333623231616465653162383632306137626138316165613161383063373234', {
+							iv: '31323334353637383132333435363738'
+        });
+alert(d + "");     #U2FsdGVkX1+vmOX1CZKawT1bU4PKfohd/2EJZKD25l0=
+
+    d = CryptoJS.AES.encrypt('15185764374@ABC',
+                             CryptoJS.enc.Utf8.parse(CryptoJS.MD5("login.189.cn")), {
+                                  iv: CryptoJS.enc.Utf8.parse("1234567812345678")
+     
+	});
+	alert(d + "");
+	
+    d = CryptoJS.AES.encrypt('15185764374@ABC',
+                             '3333623231616465653162383632306137626138316165613161383063373234', {
+                                  iv: '31323334353637383132333435363738'
+     
+	});
+	alert(d + "");            #U2FsdGVkX18hvwOBm/65cu3g6Kim4+BJSKs0wiLD2yc=
+
+32位 MD5：33b21adee1b8620a7ba81aea1a80c724
+16位 MD5：e1b8620a7ba81aea
+
+						 
+
+						 $.fn.aesEncrypt = function(n) {
+    var t = CryptoJS.MD5("login.189.cn"),				#33b21adee1b8620a7ba81aea1a80c724
+        i = CryptoJS.enc.Utf8.parse(t),                    #加密秘钥MD5    //十六位十六进制数作为密钥  3333623231616465653162383632306137626138316165613161383063373234    
+        r = CryptoJS.enc.Utf8.parse("1234567812345678"),   #矢量			//十六位十六进制数作为密钥偏移量   31323334353637383132333435363738
+        u = CryptoJS.AES.encrypt(n, i, {                   # AES加密        ---->十进制--->二进制
+            iv: r
+        });
+    return u + ""
+};
+$.fn.aesDecrypt = function(n) {
+    var t = CryptoJS.MD5("login.189.cn"),
+        i = CryptoJS.enc.Utf8.parse(t),
+        r = CryptoJS.enc.Utf8.parse("1234567812345678");
+    return CryptoJS.AES.decrypt(n, i, {
+        iv: r
+    }).toString(CryptoJS.enc.Utf8)
+};
+分组密码有五种工作体制：
+1.电码本模式（Electronic Codebook Book (ECB)）；
+2.密码分组链接模式（Cipher Block Chaining (CBC)）；
+3.计算器模式（Counter (CTR)）；
+4.密码反馈模式（Cipher FeedBack (CFB)）；
+5.输出反馈模式（Output FeedBack (OFB)）
+
+对称解密使用的算法是 AES-128-CBC算法，数据采用 PKCS#7 填充 ， 因此这里的 key 需要为16位！
+
+4.延伸
+AES加密函数 返回值为 加密对象ciphertext，其属性： 
+* ciphertext: ciphertextWordArray, 
+* key: keyWordArray, 
+* iv: ivWordArray, 
+* algorithm: CryptoJS.algo.AES, 
+* mode: CryptoJS.mode.CBC, 
+* padding: CryptoJS.pad.PKCS7, 
+* blockSize: 4, 
+* formatter: CryptoJS.format.OpenSSL
+
+属性ciphertext即 密文，可以发现，其为WordArray类型。通过 加密对象.属性名 取值
+utf8字符串—>WordArray对象
+
+https://blog.csdn.net/qq_26562641/article/details/75309222
+ var wordArray = CryptoJS.enc.Utf8.parse(utf8String
+理解成CryptoJS中定义的 新的数据类型，叫“单词数组”
+
+cipher-core.js、crypto-js.js
+执行JS的类库：execjs，PyV8，selenium，node
+1.需要依赖的js文件——aes.min.js
+md5_password = execjs.compile(open(r"md5.js").read().decode("utf-8")).call(‘hex_md5‘, password) #md5.js文件已复制到本地
+
+
+俗话说兵来将挡水来土掩，我们只能见招拆招
+验证码：
+
+function(f) {
+        if (f.rspType == "0") {
+            if (f.captchaFlag == true) {
+                if ($("#liCaptcha").is(":visible")) {
+                    return
+                }
+                showCaptcha();
+                $("#liCaptcha").show()
+            } else {
+                if (!$("#liCaptcha").is(":visible")) {
+                    return
+                }
+                $("#liCaptcha").attr("src", "");
+                $("#liCaptcha").hide()
+            }
+        } 
+		
+http://login.189.cn/web/captcha?undefined&source=login&width=100&height=37&
+		
+function showCaptcha() {
+    d = "http://login.189.cn/web/captcha?undefined&source=login&width=100&height=37&" + Math.random();
+alert(d + "");  
+}
+
+    d ="http://login.189.cn/web/captcha?undefined&source=login&width=100&height=37&" + Math.random();
+	
+	alert(d + "");
+
+采用协议破解：
+1：cookie标记，将请求index首页的cookie保存，带着cookie去请求验证码图片，再将带着cookie的答案连同登录参数一起发出。
+
+2：绕过首页cookie，有时候也是可以的，比如12306.只用cookie直接取验证码就可以了，不用拿首页cookie
+
+3：通过会话session，这样的请求会自动连接前后的cookie
+
+
+http://login.189.cn/web/captcha?undefined&source=login&width=100&height=37&0.42467969715376164
+googlebot会抓取display:none的内容
+
+http://login.189.cn/web/pwd/validate
+
+电信网站的爬取任务：
+
+196.17.143.223:3128
+45.57.186.59:3128
+196.17.143.145:3128
+192.126.129.15:3128
+
+"""
+http://js.189.cn/nservice/login/toLogin?favurl=http://js.189.cn/index
+17385314488
+580748
+
+17785395847
+046023  
+"""
+522228198808172049
+宋敏欣
+
+用户姓名            
+证件号               
+手机号                              ok
+开卡日期
+联系地址
+其它联系人姓名
+其它联系电话
+用户最近6个月的账单记录
+用户选择的话费套餐金额              OK
+用户最近3个月的通话详单
+
+jQuery183039314611861147397_1544426553370
+jQuery18309513266267493878_1544426914175
+jQuery18309513266267493878_1544426914175({'userIp':'1.204.113.35'})
+
+operate: getUserIpAdress
+callback: jQuery18309513266267493878_1544426914175
+
+/dqmh/system.do?operate=getUserIpAdress&callback=jQuery18309513266267493878_1544426914175 
+
+callbackFunction
+jsonp跨域访问,ajax来实现异步请求
+
+$.fn.randomize=function(callback){
+	function randomizeOrder(){
+		return(Math.round(Math.random())-0.5)
+		}
+		return($(this).each(function(){var $this=$(this);
+
+		
+语法等价于-》
+jQuery.post(url,data,success(data, textStatus, jqXHR),dataType)
+
+$.ajax({
+  type: 'POST',
+  url: url,
+  data: data,
+  success: success,
+  dataType: dataType
+});
+
+http://www.189.cn/dqmh/system.do?operate=getUserIpAdress&callback=jQuery183004046820288782316_1544535256071
+
+http://www.189.cn/image/189cnv2/js/js_common_indexv2_1new.js
+
+//验证当前环境是否为ipv6环境
+var ipReg = /^([\da-fA-F]{1,4}:){6}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^::([\da-fA-F]{1,4}:){0,4}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:):([\da-fA-F]{1,4}:){0,3}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){2}:([\da-fA-F]{1,4}:){0,2}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){3}:([\da-fA-F]{1,4}:){0,1}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){4}:((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$|^:((:[\da-fA-F]{1,4}){1,6}|:)$|^[\da-fA-F]{1,4}:((:[\da-fA-F]{1,4}){1,5}|:)$|^([\da-fA-F]{1,4}:){2}((:[\da-fA-F]{1,4}){1,4}|:)$|^([\da-fA-F]{1,4}:){3}((:[\da-fA-F]{1,4}){1,3}|:)$|^([\da-fA-F]{1,4}:){4}((:[\da-fA-F]{1,4}){1,2}|:)$|^([\da-fA-F]{1,4}:){5}:([\da-fA-F]{1,4})?$|^([\da-fA-F]{1,4}:){6}:$/;
+$.ajax({
+	type:"POST",
+	url:"/dqmh/system.do?operate=getUserIpAdress",
+	dataType:"jsonp",
+	jsonp: "callback",
+	success:function(data){
+		if(ipReg.test(data.userIp)==true){
+			//ipv6
+			ipv6Iips();
+		}
+	}
+});
+
+//加载提示
+function ipv6Iips(){
+	$("#iframesearchtext").after('<div class="ipv_block" style="width:28px;height:50px;position: absolute; right:286px;top:35px;"><img width="28" height="50" src="/image/189cnv2/indexv2/img_head/ipv_img.png"></div>');
+	$(".banner").prepend('<div class="ipv_tips" style="width:196px;height:36px;background: rgba(0,0,0,0.2);border-radius: 5px;position: absolute;z-index: 10000;left:0;right:0;top:140px;margin:0 auto;"><p style="width: 100%;text-align: center;line-height: 36px;font-size: 16px;color: #fff;">您当前处于IPv6环境下</p></div>');
+	setTimeout(function(){
+		$(".ipv_tips").fadeOut();
+	},3000);//3秒后隐藏ipv6提示
+}
+
+jQuery18309513266267493878_1544426914175({'userIp':'1.204.113.35'})
+
+代理IP：
+
+45.57.186.217:3128
+192.227.149.37:3128
+196.19.63.92:3128
+179.43.138.98:3128
+45.57.186.161:3128
+196.17.143.233:3128
+45.57.186.179:3128
+192.126.129.224:3128
+196.16.208.83:3128
+192.126.129.181:3128
+192.227.149.166:3128
+196.17.143.220:3128
+179.43.138.195:3128
+179.43.138.155:3128
+196.19.70.182:3128
+196.19.63.253:3128
+192.227.149.179:3128
+196.19.70.20:3128
+196.17.128.178:3128
+192.126.199.41:3128
+196.17.131.113:3128
+192.126.199.24:3128
+45.33.156.236:3128
+216.158.208.87:3128
+196.16.38.81:3128
+192.126.249.159:3128
+196.16.36.163:3128
+45.33.156.43:3128
+196.17.128.171:3128
+192.126.249.118:3128
+196.16.36.208:3128
+196.16.38.60:3128
+216.158.208.217:3128
+196.17.131.136:3128
+196.16.36.102:3128
+196.17.131.74:3128
+196.17.128.157:3128
+192.126.199.110:3128
+196.16.36.48:3128
+216.158.208.78:3128
+196.16.38.193:3128
+196.17.128.91:3128
+196.17.131.199:3128
+192.126.249.33:3128
+216.158.208.82:3128
+192.126.199.118:3128
+192.126.249.206:3128
+45.33.156.116:3128
+192.126.199.130:3128
+192.126.199.62:3128
+192.126.249.13:3128
+196.17.131.150:3128
+45.33.156.103:3128
+196.17.128.124:3128
+45.33.156.176:3128
+216.158.208.246:3128
+216.158.208.128:3128
+196.16.38.108:3128
+192.126.199.251:3128
+45.33.156.242:3128
+192.126.249.69:3128
+
+nmp install xxx
+
+第5个任务：
+http://ceodelhi.gov.in/OnlineErms/ElectorSearchIdCard.aspx
+
+印度选举网站
+
+
+第6个任务：
+验证码识别：
+https://parivahan.gov.in/rcdlstatus/?pur_cd=101    
+
+https://www1.incometaxindiaefiling.gov.in/e-FilingGS/Services/LinkAadhaarPrelogin.html
+https://www1.incometaxindiaefiling.gov.in/e-FilingGS/CreateCaptcha.do?0.5154103441138943
+
+
+第7个任务重新实现https://www.jio.com/Jio/portal/jioLogin 登陆：
+登录的URL= https://www.jio.com/Jio/portal/jioLogin
+
+username = "duxmin2006@126.com"
+password = "qwertyui12"
+
+实现登入
+
+第7个任务：
+TDS 
+https://www.tdscpc.gov.in/app/tapn/tdstcscredit.xhtml
+cook的方式：
+result = requests.get(url, headers=self.headers)
+cookie = result.headers['Set-Cookie']
+

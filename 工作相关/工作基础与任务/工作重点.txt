@@ -1,0 +1,32 @@
+熟悉亚马逊平台DynamoDB ,SQS，gateway
+我的github 账号和密码：1214861939@qq.com\MrJson1    15185764374abc
+地址gzcad.xyz  端口9006  密码：admin9006#@!
+
+
+WhatsApp
+
+https://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/GettingStarted.Python.03.html         DynamoDB
+https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-getting-started.html    SQS
+https://docs.aws.amazon.com/zh_cn/apigateway/latest/developerguide/welcome.html    							 gateway   MrJson：15185764374abc!
+
+1、DynamoDB
+
+VPN
+地址gzcad.xyz  端口9006  密码：admin9006#@!
+https://github.com/shadowsocks/shadowsocks-windows/releases?after=4.0.10
+
+
+163授权码：123456789abc
+QQ： clleujeyfpbzhhbi
+
+
+四、
+1. 用户通过接口提供邮箱地址（我们要求提供公司邮箱，gmail等邮件服务商的地址定义为私人邮箱）
+2. 我们邮件服务器给对方发送验证码，
+3. 客户通过接口返回验证码
+4. 我们返回判断结果，结果包括：
+    a. 客户提供的邮箱是否正确（验证码是否正确）
+    b. 如客户提供的邮箱是公司邮箱且邮箱正确，在我们的数据库中筛选该邮箱对应的公司信息，包括公司基本资料以及当前招聘岗位数、平均薪资、办公室所在地等信息
+
+requestid  当前时间+随机4位数
+

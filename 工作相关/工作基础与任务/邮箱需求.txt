@@ -1,0 +1,30 @@
+做成这样的服务： 
+1. 用户提供给我们的向邮箱发一个验证码邮件                                          OK
+2. 让用户返回验证码给我们，判断该邮件是否准确										OK
+3. 用户返回的验证码正确以后，再根据我们的公司数据判断用户的邮箱是否属于公司邮箱
+4. 把这个公司的信息提取出来，与该客户的邮箱一起发给接口。
+
+
+1. 用户通过接口提供邮箱地址（我们要求提供公司邮箱，gmail等邮件服务商的地址定义为私人邮箱）
+2. 我们邮件服务器给对方发送验证码，
+3. 客户通过接口返回验证码
+4. 我们返回判断结果，结果包括：
+    a. 客户提供的邮箱是否正确（验证码是否正确）
+    b. 如客户提供的邮箱是公司邮箱且邮箱正确，在我们的数据库中筛选该邮箱对应的公司信息，包括公司基本资料以及当前招聘岗位数、平均薪资、办公室所在地等信息
+
+
+
+requestid  当前时间+随机4位数
+
+查询到的如下信息：
+companyinfo_brief:((1, 'https://www.glassdoor.co.in/Overview/Working-at-V-K-Group-EI_IE1108347.11,20.htm', 'V.K. Group', 'www.vkindia.com', 'Mumbai', '1 to 50 employees', ' 1969', ' Contract', ' Unknown', ' Unknown / Non-Applicable per year', ' Unknown', '5.0'),)
+companySalaryInfo:[()]
+companylocationInfo[((1, '{}', 'https://www.glassdoor.co.in/Overview/Working-at-V-K-Group-EI_IE1108347.11,20.htm', 1),)]
+
+
+测试的情况：
+1.邮箱格式正确，但是表格没有相关的信息，邮件此时不发送
+2.邮箱格式不正确
+3.传入的参数错误（例如邮箱参数，此错误检测包括了传入的Json格式）2跟3都出现问题的时候优先处理3
+
+4.邮箱验证码区分大小写 
