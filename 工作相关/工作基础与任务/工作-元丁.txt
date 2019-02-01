@@ -419,3 +419,7 @@ cook的方式：
 result = requests.get(url, headers=self.headers)
 cookie = result.headers['Set-Cookie']
 
+
+第8个任务：
+pan 和tan 验证
+https://www1.incometaxindiaefiling.gov.in/e-FilingGS/Services/KnowYourTanVerify.html
