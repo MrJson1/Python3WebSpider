@@ -3,6 +3,9 @@ git  checkout  master
 查看所以分支：
 git branch -r
 
+新建一个分支：
+git branch +分支名
+
 git  checkout  master
 git clean -df
 git reset --hard  HEAD  
