@@ -38,3 +38,5 @@ service sendmail stop
 
 telnet smtp.qq.com 587
 开放端口：vi /etc/sysconfig/iptables     service iptables restart     service iptables status
+
+gunicorn -w 1 -b 0.0.0.0:8080 flask_main:app

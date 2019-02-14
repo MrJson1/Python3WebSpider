@@ -1,0 +1,6 @@
+决策树归纳算法 （ID3）1970-1980， J.Ross. Quinlan, ID3算法
+
+3、模型可视化时.dot文件转化为graphviz注意的问题 
+在cmd命令中输入dot -Tpdf iris.dot -o output.pdf 
+(1) 注意iris.dot为你的.dot文件所在路径 
+(2）输出文件路径为cmd命令行前面的路径
