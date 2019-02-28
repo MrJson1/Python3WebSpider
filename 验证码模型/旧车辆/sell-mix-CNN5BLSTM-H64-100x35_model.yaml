@@ -1,0 +1,41 @@
+
+# ModelName: Corresponding to the model file in the model directory,
+# - such as YourModelName.pb, fill in YourModelName here.
+# CharSet: Provides a default optional built-in solution:
+# - [ALPHANUMERIC, ALPHANUMERIC_LOWER, ALPHANUMERIC_UPPER,
+# -- NUMERIC, ALPHABET_LOWER, ALPHABET_UPPER, ALPHABET, ALPHANUMERIC_LOWER_MIX_CHINESE_3500]
+# - Or you can use your own customized character set like: ['a', '1', '2'].
+# CharExclude: CharExclude should be a list, like: ['a', '1', '2']
+# - which is convenient for users to freely combine character sets.
+# - If you don't want to manually define the character set manually,
+# - you can choose a built-in character set
+# - and set the characters to be excluded by CharExclude parameter.
+Model:
+  Sites: [
+  ]
+  ModelName: sell-mix-CNN5BLSTM-H64-100x35_9766
+  ModelType: 100x35
+  CharSet: ALPHANUMERIC
+  CharExclude: []
+  CharReplace: {}
+  ImageWidth: 100
+  ImageHeight: 35
+
+# Binaryzation: [-1: Off, >0 and < 255: On].
+# Smoothing: [-1: Off, >0: On].
+# Blur: [-1: Off, >0: On].
+# Resize: [WIDTH, HEIGHT]
+# - If the image size is too small, the training effect will be poor and you need to zoom in.
+Pretreatment:
+  Binaryzation: -1
+  Smoothing: -1
+  Blur: -1
+  Resize: [150, 52]
+
+Trains:
+  TrainsPath: './dataset/sell-mix-CNN5BLSTM-H64-100x35_trains.tfrecords'
+  TestPath: './dataset/sell-mix-CNN5BLSTM-H64-100x35_test.tfrecords'
+#  TrainsPath: [
+#    "C:/Users/kerlomz/Documents/Tencent Files/27009583/FileRecv/succeed_/succeed"
+#  ]
+#
