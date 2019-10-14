@@ -1,0 +1,52 @@
+﻿bin/sh^M: bad interpreter: No such file or directory解决
+问题：bin/sh^M: bad interpreter: No such file or directory
+
+原因：.sh脚本在windows系统下用记事本文件编写的。不同系统的编码格式引起的。
+
+解决方法：修改.sh文件格式
+ 
+   （1）使用vi工具
+ 
+      vi test.sh
+ 
+    （2）利用如下命令查看文件格式 
+     :set ff 或 :set fileformat 
+     可以看到如下信息 
+     fileformat=dos 或 fileformat=unix 
+     （3） 利用如下命令修改文件格式 
+     :set ff=unix 或 :set fileformat=unix 
+     :wq (存盘退出)
+ 
+注：其实，在windows下通过git bash可以直接编写unix格式.sh！
+
+也可以通过端口号查询进程，使用命令 lsof
+比如 lsof -i:6379
+kill -9 端口号
+
+
+netstat命令
+1、查看占用端口进程的PID：
+netstat -tunlp|grep {port}
+2、根据PID kill掉相关进程：
+kill -9 {PID}
+
+# cat /proc/version （Linux查看当前操作系统版本信息）
+
+nmap 127.0.0.1 查看本机开放的端口，会扫描所有端口
+linux 查看并对外开放端口   —————————————— more /etc/sysconfig/iptables 命令查看
+vim /etc/s-nail.rc
+s-nail.rc
+
+vim /etc/mail.rc
+发送邮件：echo "邮件内容" | mailx -s "邮件主题" -v 1214861939@qq.com
+service sendmail stop
+
+587端口号TLS加密   465端口号ssl 加密
+
+telnet smtp.qq.com 587
+开放端口：vi /etc/sysconfig/iptables     service iptables restart     service iptables status
+
+gunicorn -w 1 -b 0.0.0.0:8080 flask_main:app
+
+在Linux 上运行的时候如果是提示：UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position 0-1: ordinal not in range(128)，用以下命令运行代码：
+PYTHONIOENCODING=utf-8 python your_script.py

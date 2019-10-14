@@ -1,0 +1,11 @@
+更新链接使系统默认python变为python3
+mv /usr/bin/python /usr/bin/python.bak
+ln -s /usr/local/python<版本号>/bin/python<版本号> /usr/bin/python
+
+修改yum配置（否则yum无法正常运行）
+vim /usr/bin/yum
+ 
+将文件中第一行的
+    #!/usr/bin/python
+修改为系统原有的python版本地址
+    #!/usr/bin/python2.6

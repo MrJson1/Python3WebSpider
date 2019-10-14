@@ -1,0 +1,9 @@
+1.requests
+
+2.urllib3
+
+3.chardet
+
+4.certifi
+
+5.idna
