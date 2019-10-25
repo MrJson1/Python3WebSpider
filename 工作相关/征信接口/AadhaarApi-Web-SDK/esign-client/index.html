@@ -87,36 +87,45 @@
 <script type="application/javascript">
 
     //Setup gateway
-    let gatewayOptions = {
+    var creditScoreGatewayOptions={
         company_display_name: 'Your Company Name',
         front_text_color: 'FFFFFF',
         background_color: '2C3E50',
         logo_url: 'https://akta.org/wp-content/uploads/2015/02/sponsorship-fpo.gif',
-        otp_allowed: 'y',
-        fingerprint_allowed: 'n',
-        iris_allowed: 'n',
-        phone_auth: 'y',
-        draggable_sign : 'y',
-        google_sign: 'y'
+        full_name: "SATHISHKUMAR  M    SATHISH KU", 
+        address_line: "223 NACHIANNAN ANGANNAN STREET  RAMANATHAPURAM COIMBATORE",
+        state: "TN", 
+        postal: "641045", 
+        dob: "1986-06-03", 
+        pan_number: "BUXPS2681D",
+        customer_phone: "User Contact Number"
     };
 
-    //Generate gateway transaction at backend via rest API call. [Requires AGENCY ID & API KEY]
+    //Generate gateway transaction at backend via rest API call. [Requires API KEY]
     // --on scuccess pass <<gateway transaction id>> below
 
-    document.getElementById("gatewayBtn").onclick = openGateway;
+    document.getElementById("gatewayBtn").onclick = openCreditScoreGateway;//openGateway;
 
-    //open gateway
-    function openGateway() {
-        //create new gateway transaction
+    //document.getElementById("creditScoreBtn").onclick=openCreditScoreGateway;
 
-        let myAadhaarEsignGateway = new AadhaarAPIEsignGateway('{{pass_transaction_id_here}}', gatewayOptions,
-        '{{pass_customer_email_here}}');
-        openAadhaarGateway(myAadhaarEsignGateway);
+    function openCreditScoreGateway(){
+        var myAadhaarCSGateway=new CreditScoreGateway('57fe1695-38bc-4115-bf04-55cef9937ff3', creditScoreGatewayOptions);
+        openAadhaarCSGateway(myAadhaarCSGateway);
     }
 
     /************************************************
      *  Handler functions for different scenarios   *
      ************************************************/
+    function handleCreditScoreSuccess(responseJSON) {
+
+        console.log('Handling Credit Score Success at client end');
+    }
+
+    function handleCreditScoreFailure(errorJSON) {
+        console.log('Handling Credit Score failure at client end');
+        //console.log(errorJSON);
+        //Handle the case when esign fails
+    }
 
     function handleEsignConsentDenied() {
         console.log('Handling consent denial at client end');
@@ -135,7 +144,13 @@
 
     function handleAadhaarOTPFailure(errorJSON){
         console.log('Handling OTP failure cases at client end');
-        //handle case when login OTP fails
+        //console.log(errorJSON);
+        //Handle OTP failure
+        /*
+          Check for errorJSON.resultCode
+            s21 or q21 : No email or mobile associated with aadhaar (when Fingerprint is disabled)
+            410 or q02: OTP requested more than 3 times for same transaction (when Fingerprint is disabled)
+         */
     }
 
     function handleGatewayError(errorJSON) {
