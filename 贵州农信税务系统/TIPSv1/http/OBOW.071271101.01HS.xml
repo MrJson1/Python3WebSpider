@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://wrapper.trade.tfrunning.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+		<tns:oBOW712711Response>
+			<transaction>
+				<header>
+					<signature></signature>
+					<version>1.0</version>
+					<message>
+						<callTyp>SYN</callTyp>
+						<msgRef>ITLR20190918030005158651</msgRef>
+						<msgType>OBOW.071271101.01</msgType>
+						<reserve></reserve>
+					</message>
+					<status>
+						<appCd>OBOW</appCd>
+						<desc>Œ¥≈‰÷√±®Œƒ</desc>
+						<retCd>00000</retCd>
+						<wrapperFailDetailMessage></wrapperFailDetailMessage>
+					</status>
+				</header>
+				<body>
+					<response>
+						<xfaceTradeDTO>
+							<responseDTO/>
+						</xfaceTradeDTO>
+					</response>
+				</body>
+			</transaction>
+		</tns:oBOW712711Response>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

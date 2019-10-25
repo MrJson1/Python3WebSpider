@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<transaction xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://wrapper.trade.tfrunning.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<header>
+		<signature></signature>
+		<version>1.0</version>
+		<message>
+			<callTyp>SYN</callTyp>
+			<msgRef>ITLR20191009030007748407</msgRef>
+			<msgType>OBOW.07123010.01</msgType>
+			<reserve></reserve>
+		</message>
+		<status>
+			<appCd>OBOW</appCd>
+			<desc>交易成功</desc>
+			<retCd>00000</retCd>
+			<wrapperFailDetailMessage></wrapperFailDetailMessage>
+		</status>
+	</header>
+	<body>
+		<response>
+			<xfaceTradeDTO>
+				<responseDTO>
+					<reg_order>20125200910013638666</reg_order>
+					<det_num>1</det_num>
+					<insuranceInfo>
+						<social_sec_branch>5200000201522731</social_sec_branch>
+						<user_id>28258950</user_id>
+						<tax_org_code>15227310000</tax_org_code>
+						<pay_type>0</pay_type>
+						<sub_det_num>1</sub_det_num>
+						<insuranceTypeInfo>
+							<begin_date>201210</begin_date>
+							<end_date>999912</end_date>
+							<project_code>10210</project_code>
+							<project_name>城乡居民基本养老保险费</project_name>
+							<item_code>102100100</item_code>
+							<item_name>城乡居民基本养老保险费</item_name>
+							<sub_item_code>000000000</sub_item_code>
+							<sub_item_name>000000000</sub_item_name>
+						</insuranceTypeInfo>
+					</insuranceInfo>
+				</responseDTO>
+			</xfaceTradeDTO>
+		</response>
+	</body>
+</transaction>
