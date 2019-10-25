@@ -1,0 +1,228 @@
+MongoDB后台管理 Shell:   ./mongo
+
+?不能是空字符串（"")。
+?不得含有' '（空格)、.、$、/、\和\0 (空宇符)。
+?应全部小写。
+?最多64字节
+
+有一些数据库名是保留的，可以直接访问这些有特殊作用的数据库。
+?admin： 从权限的角度来看，这是"root"数据库。要是将一个用户添加到这个数据库，这个用户自动继承所有数据库的权限。一些特定的服务器端命令也只能从这个数据库运行，比如列出所有的数据库或者关闭服务器。
+?local: 这个数据永远不会被复制，可以用来存储限于本地单台服务器的任意集合
+?config: 当Mongo用于分片设置时，config数据库在内部使用，用于保存分片的相关信息
+
+需要注意的是：
+1.文档中的键/值对是有序的。
+2.文档中的值不仅可以是在双引号里面的字符串，还可以是其他几种数据类型（甚至可以是整个嵌入的文档)。
+3.MongoDB区分类型和大小写。
+4.MongoDB的文档不能有重复的键。
+5.文档的键是字符串。除了少数例外情况，键可以使用任意UTF-8字符
+
+合法的集合名
+?集合名不能是空字符串""。
+?集合名不能含有\0字符（空字符)，这个字符表示集合名的结尾。
+?集合名不能以"system."开头，这是为系统集合保留的前缀。
+?用户创建的集合名字不能含有保留字符。有些驱动程序的确支持在集合名里面包含，这是因为某些系统生成的集合中包含该字符。除非你要访问这种系统创建的集合，否则千万不要在名字里出现$。
+
+执行删除命令：db.drop.Database()
+
+在执行remove()函数前先执行find()命令来判断执行的条件是否正确，这是一个比较好的习惯。
+
+
+# 认识mongodb
+
+- MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
+
+- MongoDB中将数据存储为一个文档，文档由键值对(key=>value)组成，MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
+
+# 概念
+
+- 和关系型数据库一样，MongoDB存在数据库的概念，一个MongoDB可以创建多个数据库。 
+- 多个键及其关联的值有序地放置在一起就是文档，文档时MongoDB中数据的基本单元，是MongoDB的核心概念，很类似关系数据库中的行（记录）。
+- 集合就是一组文档的组合，集合可以被看作关系型数据库中的表。
+
+| RDBMS(关系型数据库管理系统) | MongoDB            |
+| --------------------------- | ------------------ |
+| Database（数据库）          | Database（数据库） |
+| Table（表）                 | Collection（集合） |
+| Record（记录）              | Document（文档）   |
+
+
+
+# 库级操作
+
+```python
+use DATABASE			#切换/创建库		
+show dbs				#查看所有数据库（空库不会显示）
+db.dropDatabase()			#删除当前数据库
+db				#查看当前所在库
+
+```
+
+
+
+#集合操作
+
+```python
+db.createCollection(name, options)	#创建集合   用引号引起来
+
+show collections				#查看当前数据库的集合
+
+db.集合名称.drop()				#删除集合
+```
+
+
+
+# 文档操作
+
+## 插入
+
+```python
+db.集合名称.insert(document)	
+#插入文档，    集合不存在会自动创建， 不能插入重复id的数
+#_id 是12个字节十六进制数在一个集合的每个文档是唯一的。
+
+db.student.insert({name:'句号'})
+db.student.insert({name:'句号', age:18})
+
+db.student.insert({_id:1, name:'句号', age:18})
+
+
+db.student.insert([
+    {name:'juhao', sex:'男', age:18},
+    {name:'nanbei', sex:'男', age:19},
+    {name:'budong', sex:'男', age:20},
+])
+```
+
+## 查询
+
+```python
+db.集合名称.find()				#查询所有
+db.集合名称.find().pretty()		#结构化显示
+
+db.student.find({name:'句号'})			where name = 'key'
+
+db.student.find({name:{$ne:'句号'}})		where name != 'key'
+
+db.student.find({age:{$gt:18}})		where name > 10
+
+db.student.find({age:{$gt:18}})  age>18		where name < 10
+	
+
+#and逻辑
+{$and:[{expression1}, {expression1}, ...]   }
+#or逻辑
+{$or:[{expression1}, {expression1}, ...]   }
+
+
+#where sex='男' and age > 18
+db.table.find({
+    $and:[
+        {sex:'男'}, {age:{$gt:18}}
+    ]
+})
+
+
+#where sex='女' or age =18
+db.table.find({
+    $or:[
+        {sex:'女'}, {age:18}
+    ]
+})
+
+```
+
+
+
+## 更新
+
+```python
+db.table.insert({
+    name: 'juhao', 
+    age: 18,
+    height: 180,
+    sex:'男',
+    virtue: ['帅', '帅', '帅'],
+})
+
+#前面查询的条件也可以用在这里, wherer sex=男 and age>18
+db.table.update(
+	{$and:[{sex:'男'}, {age:{$gt:18}}]}, 
+    {$set:{age:666}},
+    {multi:true}
+)
+
+
+db.table.update({sex:'男'},[{age:20},{height:180}])	
+#更新第一条找到的文档全部值  无multi
+
+db.table.update({sex:'男'}, {$set:{age:666, agee:6666}}) 
+#修改第一条找到的文档， key不存在就添加
+
+db.table.update({sex:'男'}, {$set:{sex:'女'}}, {multi:true})	#更新全部
+```
+
+
+
+## 删除
+
+```python
+db.集合名称.remove( <query>, <justOne> )
+db.table.remove({age:18})		#删除所有满足条件的
+db.table.remove({sex:'男'}, {justOne:true})	#删除一条
+
+#where sex='男' and age>18
+db.table.remove({
+    $and:[
+        {sex:'男'}, {age:{$gt:18}}
+    ]
+})
+```
+
+
+
+
+
+## 程序操作mongodb
+
+```python
+import pymongo
+
+# 建立连接,指定mongodb服务器ip及端口
+connection = pymongo.MongoClient(host='120.77.37.34', port = 27017)
+
+#指定数据库
+db = connection['student']            #选择student数据库。没有就自动创建
+
+
+#选择集合
+collection = db['table']         #使用集合db。table
+
+
+connection.database_names() 	 #获取数据库列表
+db.collection_names()		#获得集合列表
+
+
+
+# 插入操作
+result = collection.insert({'name':'juhao','age': 18,})	
+
+# 查询操作
+for data in collection.find():		#查找全部
+    	print(data)
+        
+collection.find_one()			#获取一条记录
+
+# 删除操作
+result = collection.remove({'name': 'juhao'})# 删除全部
+collection.delete_one({'name':'juhao'})	#删除一条， 不存在不做任何操作
+collection.delete_many({'name':'juhao'})	#删除所有满足条件的
+
+#修改
+collection.update({'name':'juhao'}, {'$set':{'age':'20'}})	#只能修改一条
+collection.update_one({'name':'juhao'}, {'$set':{'age':20}})
+
+update_many({'name':'juhao'}, {'age':20})	
+#报错，必须要{'$set':{'age':20}}
+
+```
